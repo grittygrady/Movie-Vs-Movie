@@ -20,13 +20,17 @@ function formatQueryParams(params) {
 }
 
 /*** FETCH FUNCTION ***/
-function getMovieData(query) {
-  const params = {
+function getMovieData(query1, query2) {
+  const params1 = {
     apikey: apikey,
-    t: query
+    t: query1
   };
-  const queryString1 = formatQueryParams(params)
-  const queryString2 = formatQueryParams(params)
+  const params2 = {
+    apikey: apikey,
+    t: query2
+  }
+  const queryString1 = formatQueryParams(params1)
+  const queryString2 = formatQueryParams(params2)
   const url1 = searchURL + '&' + queryString1;
   const url2 = searchURL + '&' + queryString2;
 
@@ -85,6 +89,7 @@ function getMovieData(query) {
   function initialize() {
     console.log('Ready, awaiting input');
     formListener();
+    renderMoviePreview();
   }
 
 
