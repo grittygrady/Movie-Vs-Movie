@@ -48,52 +48,58 @@ function getMovieData(query1, query2) {
     }).catch(function (error) {
       alert('error');
     });
+  STORE.page = 'preview';
   renderMoviePreview();
-  }
-
-
-  console.log(movieChoice1);
-  console.log(movieChoice2);
-  /*** RENDER FUNCTIONS ***/
-function renderMoviePreview() {
-
 }
 
 
-  /*** TEMPLATE GENERATION FUNCTIONS ***/
 
 
-
-
-  /*** EVENT HANDLER FUNCTIONS ***/
-  function formListener() {
-    $('form').on('submit', function (event) {
-      event.preventDefault();
-      console.log('Form Submitted'); //FOR TESTING PURPOSES
-      $('.start-page').addClass("hidden");
-      const searchTerm1 = $('#movie1').val();
-      const searchTerm2 = $('#movie2').val();
-      console.log(searchTerm1);
-      console.log(searchTerm2); //FOR TESTING PURPOSES
-      getMovieData(searchTerm1, searchTerm2);
-    });
+/*** RENDER FUNCTIONS ***/
+function renderMoviePreview() {
+  if (STORE.page === 'preview') {
+  $('main').html(generateMoviePreview());
   }
+}
+
+
+/*** TEMPLATE GENERATION FUNCTIONS ***/
+function generateMoviePreview() {
+  return `<article><h3>${movieChoice1[0].title}</h3></article>`
+}
+console.log(movieChoice1);
+console.log(movieChoice2);
+
+
+/*** EVENT HANDLER FUNCTIONS ***/
+function formListener() {
+  $('form').on('submit', function (event) {
+    event.preventDefault();
+    console.log('Form Submitted'); //FOR TESTING PURPOSES
+    $('.start-page').addClass("hidden");
+    const searchTerm1 = $('#movie1').val();
+    const searchTerm2 = $('#movie2').val();
+    console.log(searchTerm1);
+    console.log(searchTerm2); //FOR TESTING PURPOSES
+    getMovieData(searchTerm1, searchTerm2);
+  });
+}
 
 
 
-  /*** HELPER FUNCTIONS ***/
+/*** HELPER FUNCTIONS ***/
 
 
 
-  /*** INITIALIZER FUNCTION ***/
+/*** INITIALIZER FUNCTION ***/
 
 
-  function initialize() {
-    console.log('Ready, awaiting input');
-    formListener();
-    renderMoviePreview();
-  }
+function initialize() {
+  console.log('Ready, awaiting input');
+  formListener();
+  renderMoviePreview();
+}
 
 
 
-  $(initialize);
+$(initialize);
