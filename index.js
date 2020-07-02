@@ -49,51 +49,52 @@ function getMovieData(query1, query2) {
       alert('error');
     });
   renderMoviePreview();
-  }
-
-
-  console.log(movieChoice1);
-  console.log(movieChoice2);
-  /*** RENDER FUNCTIONS ***/
-function renderMoviePreview() {
-  
 }
 
 
-  /*** TEMPLATE GENERATION FUNCTIONS ***/
+console.log(movieChoice1);
+console.log(movieChoice2);
+/*** RENDER FUNCTIONS ***/
+function renderMoviePreview() {
+  $('main').html(generateMoviePreview());
+}
+
+
+/*** TEMPLATE GENERATION FUNCTIONS ***/
+function generateMoviePreview() {
+  return `<article><h3>${movieChoice1[0].title}</h3></article>`
+}
 
 
 
-
-  /*** EVENT HANDLER FUNCTIONS ***/
-  function formListener() {
-    $('form').on('submit', function (event) {
-      event.preventDefault();
-      console.log('Form Submitted'); //FOR TESTING PURPOSES
-      $('.start-page').addClass("hidden");
-      const searchTerm1 = $('#movie1').val();
-      const searchTerm2 = $('#movie2').val();
-      console.log(searchTerm1);
-      console.log(searchTerm2); //FOR TESTING PURPOSES
-      getMovieData(searchTerm1, searchTerm2);
-    });
-  }
-
-
-
-  /*** HELPER FUNCTIONS ***/
+/*** EVENT HANDLER FUNCTIONS ***/
+function formListener() {
+  $('form').on('submit', function (event) {
+    event.preventDefault();
+    console.log('Form Submitted'); //FOR TESTING PURPOSES
+    $('.start-page').addClass("hidden");
+    const searchTerm1 = $('#movie1').val();
+    const searchTerm2 = $('#movie2').val();
+    console.log(searchTerm1);
+    console.log(searchTerm2); //FOR TESTING PURPOSES
+    getMovieData(searchTerm1, searchTerm2);
+  });
+}
 
 
 
-  /*** INITIALIZER FUNCTION ***/
-
-
-  function initialize() {
-    console.log('Ready, awaiting input');
-    formListener();
-    renderMoviePreview();
-  }
+/*** HELPER FUNCTIONS ***/
 
 
 
-  $(initialize);
+/*** INITIALIZER FUNCTION ***/
+
+
+function initialize() {
+  console.log('Ready, awaiting input');
+  formListener();
+}
+
+
+
+$(initialize);
