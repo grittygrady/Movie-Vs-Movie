@@ -56,7 +56,7 @@ function getMovieData(query1, query2) {
   console.log(movieChoice2);
   /*** RENDER FUNCTIONS ***/
 function renderMoviePreview() {
-
+  
 }
 
 
