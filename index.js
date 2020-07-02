@@ -48,15 +48,18 @@ function getMovieData(query1, query2) {
     }).catch(function (error) {
       alert('error');
     });
+  STORE.page = 'preview';
   renderMoviePreview();
 }
 
 
-console.log(movieChoice1);
-console.log(movieChoice2);
+
+
 /*** RENDER FUNCTIONS ***/
 function renderMoviePreview() {
+  if (STORE.page === 'preview') {
   $('main').html(generateMoviePreview());
+  }
 }
 
 
@@ -64,7 +67,8 @@ function renderMoviePreview() {
 function generateMoviePreview() {
   return `<article><h3>${movieChoice1[0].title}</h3></article>`
 }
-
+console.log(movieChoice1);
+console.log(movieChoice2);
 
 
 /*** EVENT HANDLER FUNCTIONS ***/
@@ -93,6 +97,7 @@ function formListener() {
 function initialize() {
   console.log('Ready, awaiting input');
   formListener();
+  renderMoviePreview();
 }
 
 
