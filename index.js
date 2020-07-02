@@ -65,7 +65,7 @@ function renderMoviePreview() {
 
 /*** TEMPLATE GENERATION FUNCTIONS ***/
 function generateMoviePreview() {
-  return `<article><h3>${movieChoice1[0].title}</h3></article>`
+  return `<article><h3>${movieChoice1}</h3></article>`
 }
 console.log(movieChoice1);
 console.log(movieChoice2);
