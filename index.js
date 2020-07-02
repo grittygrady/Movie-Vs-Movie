@@ -48,13 +48,16 @@ function getMovieData(query1, query2) {
     }).catch(function (error) {
       alert('error');
     });
+  renderMoviePreview();
   }
 
 
   console.log(movieChoice1);
   console.log(movieChoice2);
   /*** RENDER FUNCTIONS ***/
+function renderMoviePreview() {
 
+}
 
 
   /*** TEMPLATE GENERATION FUNCTIONS ***/
@@ -73,7 +76,6 @@ function getMovieData(query1, query2) {
       console.log(searchTerm1);
       console.log(searchTerm2); //FOR TESTING PURPOSES
       getMovieData(searchTerm1, searchTerm2);
-
     });
   }
 
