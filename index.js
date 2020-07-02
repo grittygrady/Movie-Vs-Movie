@@ -45,7 +45,7 @@ function getMovieData(query1, query2) {
     }).then(function (data) {
       movieChoice1.push(data[0]);
       movieChoice2.push(data[1]);
-      renderMoviePreview();
+      render();
     }).catch(function (error) {
       alert('error');
     });
@@ -57,9 +57,11 @@ function getMovieData(query1, query2) {
 
 
 /*** RENDER FUNCTIONS ***/
-function renderMoviePreview() {
+function render() {
   if (STORE.page === 'preview') {
   $('main').html(generateMoviePreview());
+  } else if (STORE.page === 'quiz1') {
+  $('main').html(generateQuiz());
   }
 }
 
@@ -73,7 +75,12 @@ function generateMoviePreview() {
   <article><h3>${movieChoice2[0].Title}</h3>
   <img src="${movieChoice2[0].Poster}">
   <p>${movieChoice2[0].Plot}</p>
-  </article>`
+  </article>
+  <button class="start-quiz">Let's Go!</button>`;
+}
+
+function generateQuiz() {
+  return `<div><h2>Do critic scores matter to you?</h2></div>`;
 }
 console.log(movieChoice1);
 console.log(movieChoice2);
@@ -93,6 +100,12 @@ function formListener() {
   });
 }
 
+function quizStart() {
+  $('main').on('click', '.start-quiz', function() {
+    STORE.page = 'quiz1';
+    render();
+  });
+}
 
 
 /*** HELPER FUNCTIONS ***/
@@ -105,7 +118,8 @@ function formListener() {
 function initialize() {
   console.log('Ready, awaiting input');
   formListener();
-  renderMoviePreview();
+  render();
+  quizStart();
 }
 
 
