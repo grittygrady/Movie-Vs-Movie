@@ -45,11 +45,12 @@ function getMovieData(query1, query2) {
     }).then(function (data) {
       movieChoice1.push(data[0]);
       movieChoice2.push(data[1]);
+      renderMoviePreview();
     }).catch(function (error) {
       alert('error');
     });
   STORE.page = 'preview';
-  renderMoviePreview();
+  
 }
 
 
@@ -65,7 +66,14 @@ function renderMoviePreview() {
 
 /*** TEMPLATE GENERATION FUNCTIONS ***/
 function generateMoviePreview() {
-  return `<article><h3>${movieChoice1}</h3></article>`
+  return `<article><h3>${movieChoice1[0].Title}</h3>
+  <img src="${movieChoice1[0].Poster}">
+  <p>${movieChoice1[0].Plot}</p>
+  </article>
+  <article><h3>${movieChoice2[0].Title}</h3>
+  <img src="${movieChoice2[0].Poster}">
+  <p>${movieChoice2[0].Plot}</p>
+  </article>`
 }
 console.log(movieChoice1);
 console.log(movieChoice2);
