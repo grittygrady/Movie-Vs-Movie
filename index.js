@@ -2,7 +2,7 @@
 /* STORE */
 const STORE = {
   page: "start",
-  questions: [],
+  questions: ["Do critic scores matter to you?", "Do you feel like a long movie or something shorter?", "Something family friendly or bring on the F-Bombs?"],
   
 
 }
