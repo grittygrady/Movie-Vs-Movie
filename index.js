@@ -12,6 +12,10 @@ const searchURL = 'https://www.omdbapi.com/?';
 const movieChoice1 = [];
 const movieChoice2 = [];
 
+/*** SCORES FOR QUIZ PORTION ***/
+let movie1Score = 0;
+let movie2Score = 0;
+
 /*** FORMAT FUNCTIONS ***/
 function formatQueryParams(params) {
   const queryItems = Object.keys(params)
@@ -79,6 +83,9 @@ function generateMoviePreview() {
   <button class="start-quiz">Let's Go!</button>`;
 }
 
+/*** CREATE A FOR LOOP
+ * LOOP THROUGH QUESTIONS IN STORE INSTEAD OF HARD CODING QUESTIONS
+ */
 function generateQuiz() {
   return `<div><h2>Do critic scores matter to you?</h2></div>`;
 }
@@ -107,9 +114,16 @@ function quizStart() {
   });
 }
 
+// FUNCTION TO GENERATE A RESULTS PAGE
 
 /*** HELPER FUNCTIONS ***/
-
+/* COIN TOSS TO DETERMINE A TIE (MATH)
+    DETERMINE DIFFERENCE BETWEEN RATINGS
+    DETERMINE DIFFERENCE BETWEEN MOVIE LENGTHS
+    DETERMINE DIFFERENCE BETWEEN BUDGETS
+    FUNCTION TO CHANGE SCORE
+    DETERMINE WINNER BY COMPARING SCORES
+*/
 
 
 /*** INITIALIZER FUNCTION ***/
