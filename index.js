@@ -74,6 +74,10 @@ function render() {
     $('main').html(generateQuiz());
   } else if (STORE.page === 'quizPage2') {
     $('main').html(generateQuiz());
+  } else if (STORE.page === 'quizPage3') {
+    $('main').html(generateQuiz());
+  } else if (STORE.page === 'calculateWinner') {
+    $('main').html(calculateWinner());
   } 
 }
 
@@ -91,9 +95,6 @@ function generateMoviePreview() {
   <button class="start-quiz">Let's Go!</button>`;
 }
 
-/*** CREATE A FOR LOOP
- * LOOP THROUGH QUESTIONS IN STORE INSTEAD OF HARD CODING QUESTIONS
- */
 function generateQuiz() {
   return `<div class="quiz-portion">
   <h2>${STORE.question[questionNumber]}</h2>
@@ -144,6 +145,8 @@ function submitAnswer() {
       movieLength(selected);
     } else if (STORE.page === 'quizPage3') {
       adultOrFamily(selected);
+    } else if (STORE.page === 'calculateWinner') {
+      calculateWinner();
     }
   });
 }
@@ -153,7 +156,7 @@ function submitAnswer() {
 /*** HELPER FUNCTIONS ***/
 /* COIN TOSS TO DETERMINE A TIE (MATH)
     
-    FUNCTION TO CHANGE SCORE
+
     DETERMINE WINNER BY COMPARING SCORES
 */
 //DETERMINE DIFFERENCE BETWEEN RATINGS
@@ -211,11 +214,41 @@ function movieLength(selected) {
 
 // DETERMINE DIFFERENCE BETWEEN MPAA RATINGS
 function adultOrFamily(selected) {
-  
+  let movie1Rating = movieChoice1[0].Rated;
+  let movie2Rating = movieChoice2[0].Rated;
+
+  if (selected === "high" && movie1Rating === "R") {
+    movie1Score++;
+  } else if (selected === "high" && movie2Rating === "R") {
+    movie2Score++;
+  } else if (selected === "medium" && movie1Rating !== "R") {
+    movie1Score++;
+  } else if (selected === "medium" && movie2Rating !== "R") {
+    movie2Score++;
+  } 
+  STORE.page = 'calculateWinner';
+  render();
 }
 
-
-
+//DETERMINE WINNER BY COMPARING SCORES
+function calculateWinner() {
+  if (movie1Score > movie2Score) {
+    return `<div><h3>${movieChoice1[0].Title}</h3>
+    <img src="${movieChoice1[0].Poster}">
+    <p>${movieChoice1[0].Plot}</p>
+    </div>`
+  } else if (movie2Score > movie1Score) {
+    return `<div><h3>${movieChoice2[0].Title}</h3>
+    <img src="${movieChoice2[0].Poster}">
+    <p>${movieChoice2[0].Plot}</p></div>`
+  }
+  else {
+    // itsATie();
+    alert("its a tie")
+  }
+  STORE.page = 'quizResults';
+  render();
+}
 
 /*** INITIALIZER FUNCTION ***/
 function initialize() {
