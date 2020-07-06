@@ -233,12 +233,12 @@ function adultOrFamily(selected) {
 //DETERMINE WINNER BY COMPARING SCORES
 function calculateWinner() {
   if (movie1Score > movie2Score) {
-    return `<div><h3>${movieChoice1[0].Title}</h3>
+    return `<div><h2>We Have a Winner!</h2><h3>${movieChoice1[0].Title}</h3>
     <img src="${movieChoice1[0].Poster}">
     <p>${movieChoice1[0].Plot}</p>
     </div>`
   } else if (movie2Score > movie1Score) {
-    return `<div><h3>${movieChoice2[0].Title}</h3>
+    return `<div><h2>We Have a Winner!</h2><h3>${movieChoice2[0].Title}</h3>
     <img src="${movieChoice2[0].Poster}">
     <p>${movieChoice2[0].Plot}</p></div>`
   }
