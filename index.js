@@ -2,8 +2,12 @@
 /* STORE */
 const STORE = {
   page: "start",
-  questions: ["Do critic scores matter to you?", "Do you feel like a long movie or something shorter?", "Something family friendly or bring on the F-Bombs?"],
-  
+  question: ["Do critic scores matter to you?", "Do you feel like a long movie or something shorter?", "Something family friendly or bring on the F-Bombs?"],
+  answer: [
+    ["A lot", "Somewhat", "Not at all"],
+    ["Something longer", "Let's keep it shorter", "No preference"],
+    ["Bring it on", "Family friendly", "No preference"]
+  ]
 
 }
 
@@ -17,6 +21,7 @@ const movieChoice2 = [];
 /*** SCORES FOR QUIZ PORTION ***/
 let movie1Score = 0;
 let movie2Score = 0;
+let questionNumber = 0;
 
 /*** FORMAT FUNCTIONS ***/
 function formatQueryParams(params) {
@@ -56,7 +61,6 @@ function getMovieData(query1, query2) {
       alert('error');
     });
   STORE.page = 'preview';
-  
 }
 
 
@@ -65,10 +69,12 @@ function getMovieData(query1, query2) {
 /*** RENDER FUNCTIONS ***/
 function render() {
   if (STORE.page === 'preview') {
-  $('main').html(generateMoviePreview());
-  } else if (STORE.page === 'quiz1') {
-  $('main').html(generateQuiz());
-  }
+    $('main').html(generateMoviePreview());
+  } else if (STORE.page === 'quizPage1') {
+    $('main').html(generateQuiz());
+  } else if (STORE.page === 'quizPage2') {
+    $('main').html(generateQuiz());
+  } 
 }
 
 
@@ -89,13 +95,24 @@ function generateMoviePreview() {
  * LOOP THROUGH QUESTIONS IN STORE INSTEAD OF HARD CODING QUESTIONS
  */
 function generateQuiz() {
-  return `<div><h2>Do critic scores matter to you?</h2></div>`;
+  return `<div class="quiz-portion">
+  <h2>${STORE.question[questionNumber]}</h2>
+  <form>
+      <input type="radio" name="answer" value="high" required>
+      <label for="high">${STORE.answer[questionNumber][0]}</label>
+      <input type="radio" name="answer" value="medium" required>
+      <label for="medium">${STORE.answer[questionNumber][1]}</label>
+      <input type="radio" name="answer" value="low" required>
+      <label for="low">${STORE.answer[questionNumber][2]}</label>
+      <button type="submit" class="submitButton" id="submitAnswer">Submit</button>
+  </form>
+</div>`;
 }
 console.log(movieChoice1);
 console.log(movieChoice2);
 
 
-/*** EVENT HANDLER FUNCTIONS ***/
+/*** EVENT LISTENER FUNCTIONS ***/
 function formListener() {
   $('form').on('submit', function (event) {
     event.preventDefault();
@@ -110,9 +127,24 @@ function formListener() {
 }
 
 function quizStart() {
-  $('main').on('click', '.start-quiz', function() {
-    STORE.page = 'quiz1';
+  $('main').on('click', '.start-quiz', function () {
+    STORE.page = 'quizPage1';
     render();
+  });
+}
+
+function submitAnswer() {
+  $('main').on('click', '#submitAnswer', function (event) {
+    event.preventDefault();
+    let selected = $('input:checked').val();
+    console.log(selected);
+    if (STORE.page === 'quizPage1') {
+      criticWeight(selected);
+    } else if (STORE.page === 'quizPage2') {
+      movieLength(selected);
+    } else if (STORE.page === 'quizPage3') {
+      adultOrFamily(selected);
+    }
   });
 }
 
@@ -120,22 +152,78 @@ function quizStart() {
 
 /*** HELPER FUNCTIONS ***/
 /* COIN TOSS TO DETERMINE A TIE (MATH)
-    DETERMINE DIFFERENCE BETWEEN RATINGS
-    DETERMINE DIFFERENCE BETWEEN MOVIE LENGTHS
-    DETERMINE DIFFERENCE BETWEEN MPAA RATINGS
+    
     FUNCTION TO CHANGE SCORE
     DETERMINE WINNER BY COMPARING SCORES
 */
+//DETERMINE DIFFERENCE BETWEEN RATINGS
+function criticWeight(selected) {
+  if (movieChoice1[0].Ratings[1].Value > movieChoice2[0].Ratings[1].Value && selected === "high") {
+    movie1Score += 2;
+    questionNumber++;
+  } else if (movieChoice1[0].Ratings[1].Value > movieChoice2[0].Ratings[1].Value && selected === "medium") {
+    movie1Score++;
+    questionNumber++;
+  } else if (movieChoice2[0].Ratings[1].Value > movieChoice1[0].Ratings[1].Value && selected === "high") {
+    movie2Score += 2;
+    questionNumber++;
+  } else if (movieChoice2[0].Ratings[1].Value > movieChoice2[0].Ratings[1].Value && selected === "medium") {
+    movie2Score++;
+    questionNumber++;
+  } else {
+    questionNumber++;
+  }
+  STORE.page = 'quizPage2';
+  render();
+  console.log(questionNumber);
+  console.log(movie1Score);
+  console.log(movie2Score);
+}
+
+//DETERMINE DIFFERENCE BETWEEN MOVIE LENGTHS
+function movieLength(selected) {
+  //  MAY USE THIS TO CLEAN UP CODE FOR READABILITY
+  let movie1Runtime = parseInt(movieChoice1[0].Runtime);
+  let movie2Runtime = parseInt(movieChoice2[0].Runtime);
+  console.log(movie1Runtime);
+  console.log(movie2Runtime);
+  if (movieChoice1[0].Runtime > movieChoice2[0].Runtime && selected === "high") {
+    movie1Score += 2;
+    questionNumber++;
+  } else if (movieChoice1[0].Runtime > movieChoice2[0].Runtime && selected === "medium") {
+    movie1Score++;
+    questionNumber++;
+  } else if (movieChoice2[0].Runtime > movieChoice1[0].Runtime && selected === "high") {
+    movie2Score += 2;
+    questionNumber++;
+  } else if (movieChoice2[0].Runtime > movieChoice1[0].Runtime && selected === "medium") {
+    movie2Score++;
+    questionNumber++;
+  } else {
+    questionNumber++
+  }
+  STORE.page = 'quizPage3';
+  render();
+  console.log(questionNumber);
+  console.log(movie1Score);
+  console.log(movie2Score);
+}
+
+// DETERMINE DIFFERENCE BETWEEN MPAA RATINGS
+function adultOrFamily(selected) {
+  
+}
+
+
 
 
 /*** INITIALIZER FUNCTION ***/
-
-
 function initialize() {
   console.log('Ready, awaiting input');
   formListener();
   render();
   quizStart();
+  submitAnswer();
 }
 
 
