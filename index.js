@@ -1,7 +1,7 @@
 'use strict'
 /* STORE */
 const STORE = {
-  page: "start",
+  page: "landing",
   question: ["Do critic scores matter to you?", "Do you feel like a long movie or something shorter?", "Something family friendly or bring on the F-Bombs?"],
   answer: [
     ["A lot", "Somewhat", "Not at all"],
@@ -61,6 +61,7 @@ function getMovieData(query1, query2) {
       alert('error');
     });
   STORE.page = 'preview';
+  render();
 }
 
 
@@ -68,7 +69,9 @@ function getMovieData(query1, query2) {
 
 /*** RENDER FUNCTIONS ***/
 function render() {
-  if (STORE.page === 'preview') {
+    if (STORE.page === "landing"){
+    $('main').html(generateLanding());
+    } else if (STORE.page === 'preview') {
     $('main').html(generateMoviePreview());
   } else if (STORE.page === 'quizPage1') {
     $('main').html(generateQuiz());
@@ -83,8 +86,21 @@ function render() {
 
 
 /*** TEMPLATE GENERATION FUNCTIONS ***/
+function generateLanding() {
+  return `<div class="start-page">
+  <h2>Enter 2 movies and we'll help decide what to watch!</h2>
+  <form id="movie-search">
+    <label for="movie1">Movie 1: </label>
+    <input type="text" name="movie1" id="movie1" placeholder="Search for a movie" required>
+    <label for="movie2">Movie 2: </label>
+    <input type="text" name="movie2" id="movie2" placeholder="Search for a movie" required>
+    <input type="submit" value="Submit" id="submitMovie">
+  </form>
+</div>`
+}
+
 function generateMoviePreview() {
-  return `<article><h3>${movieChoice1[0].Title}</h3>
+  return `<div><article><h3>${movieChoice1[0].Title}</h3>
   <img src="${movieChoice1[0].Poster}">
   <p>${movieChoice1[0].Plot}</p>
   </article>
@@ -92,7 +108,8 @@ function generateMoviePreview() {
   <img src="${movieChoice2[0].Poster}">
   <p>${movieChoice2[0].Plot}</p>
   </article>
-  <button class="start-quiz">Let's Go!</button>`;
+  <button class="start-quiz">Let's Go!</button>
+  </div>`;
 }
 
 function generateQuiz() {
@@ -115,10 +132,9 @@ console.log(movieChoice2);
 
 /*** EVENT LISTENER FUNCTIONS ***/
 function formListener() {
-  $('form').on('submit', function (event) {
+  $('main').on('click', '#submitMovie', function (event) {
     event.preventDefault();
     console.log('Form Submitted'); //FOR TESTING PURPOSES
-    $('.start-page').addClass("hidden");
     const searchTerm1 = $('#movie1').val();
     const searchTerm2 = $('#movie2').val();
     console.log(searchTerm1);
@@ -151,7 +167,13 @@ function submitAnswer() {
   });
 }
 
-
+function restartQuiz() {
+  $('main').on('click', '#restartQuiz', function(event){
+    event.preventDefault();
+    STORE.page = 'landing';
+    render();
+  });
+}
 /*** HELPER FUNCTIONS ***/
 /* COIN TOSS TO DETERMINE A TIE (MATH)
 
@@ -189,14 +211,14 @@ function movieLength(selected) {
   if (movie1Runtime > movie2Runtime && selected === "high") {
     movie1Score += 2;
     questionNumber++;
-  } else if (movie1Runtime > movie2Runtime && selected === "medium") {
-    movie2Score++;
+  } else if (movie1Runtime < movie2Runtime && selected === "medium") {
+    movie1Score += 2;
     questionNumber++;
   } else if (movie2Runtime > movie1Runtime && selected === "high") {
     movie2Score += 2;
     questionNumber++;
-  } else if (movie2Runtime > movie1Runtime && selected === "medium") {
-    movie1Score++;
+  } else if (movie2Runtime < movie1Runtime && selected === "medium") {
+    movie2Score += 2;
     questionNumber++;
   } else {
     questionNumber++;
@@ -213,17 +235,20 @@ function adultOrFamily(selected) {
   let movie1Rating = movieChoice1[0].Rated;
   let movie2Rating = movieChoice2[0].Rated;
 
-  if (selected === "high" && movie1Rating === "R") {
+  if (selected === "high" && movie1Rating === "R" || "PG-13") {
     movie1Score += 2;
-  } else if (selected === "high" && movie2Rating === "R") {
+  } else if (selected === "high" && movie2Rating === "R" || "PG-13") {
     movie2Score += 2;
-  } else if (selected === "medium" && movie1Rating !== "R") {
+  } else if (selected === "medium" && movie1Rating !== "R" || "PG-13") {
     movie1Score += 2;
-  } else if (selected === "medium" && movie2Rating !== "R") {
+  } else if (selected === "medium" && movie2Rating !== "R" || "PG-13") {
     movie2Score += 2;
   } 
   STORE.page = 'calculateWinner';
   render();
+  console.log(questionNumber);
+  console.log(movie1Score);
+  console.log(movie2Score);
 }
 
 //DETERMINE WINNER BY COMPARING SCORES
@@ -252,6 +277,7 @@ function initialize() {
   render();
   quizStart();
   submitAnswer();
+  restartQuiz();
 }
 
 
