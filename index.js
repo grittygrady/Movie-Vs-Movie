@@ -184,7 +184,7 @@ function restartQuiz() {
 }
 
 function coinTossListener() {
-  $('main').on('click', '#coinToss', function (event) {
+  $('main').on('click', '#coinToss', function () {
     coinToss();
     STORE.page = "tieResults";
     render();
