@@ -69,9 +69,9 @@ function getMovieData(query1, query2) {
 
 /*** RENDER FUNCTIONS ***/
 function render() {
-    if (STORE.page === "landing"){
+  if (STORE.page === "landing") {
     $('main').html(generateLanding());
-    } else if (STORE.page === 'preview') {
+  } else if (STORE.page === 'preview') {
     $('main').html(generateMoviePreview());
   } else if (STORE.page === 'quizPage1') {
     $('main').html(generateQuiz());
@@ -81,7 +81,9 @@ function render() {
     $('main').html(generateQuiz());
   } else if (STORE.page === 'calculateWinner') {
     $('main').html(calculateWinner());
-  } 
+  } else if (STORE.page === "tieResults") {
+    $('main').html(coinToss());
+  }
 }
 
 
@@ -168,16 +170,29 @@ function submitAnswer() {
 }
 
 function restartQuiz() {
-  $('main').on('click', '#restartQuiz', function(event){
+  $('main').on('click', '#restartQuiz', function (event) {
+    movie1Score = 0;
+    movie2Score = 0;
+    questionNumber = 0;
+    movieChoice1.pop();
+    movieChoice2.pop();
     event.preventDefault();
     STORE.page = 'landing';
     render();
   });
 }
-/*** HELPER FUNCTIONS ***/
-/* COIN TOSS TO DETERMINE A TIE (MATH)
 
-*/
+function coinTossListener() {
+  $('main').on('click', '#coinToss', function (event) {
+    coinToss();
+    STORE.page = "tieResults";
+    render();
+  });
+
+}
+
+/*** HELPER FUNCTIONS ***/
+
 //DETERMINE DIFFERENCE BETWEEN RATINGS
 function criticWeight(selected) {
   if (movieChoice1[0].Ratings[1].Value > movieChoice2[0].Ratings[1].Value && selected === "high") {
@@ -234,8 +249,9 @@ function movieLength(selected) {
 function adultOrFamily(selected) {
   let movie1Rating = movieChoice1[0].Rated;
   let movie2Rating = movieChoice2[0].Rated;
-
-  if (selected === "high" && movie1Rating === "R" || "PG-13") {
+  if (selected === "low") {
+    console.log("no preference");
+  } else if (selected === "high" && movie1Rating === "R" || "PG-13") {
     movie1Score += 2;
   } else if (selected === "high" && movie2Rating === "R" || "PG-13") {
     movie2Score += 2;
@@ -243,7 +259,7 @@ function adultOrFamily(selected) {
     movie1Score += 2;
   } else if (selected === "medium" && movie2Rating !== "R" || "PG-13") {
     movie2Score += 2;
-  } 
+  }
   STORE.page = 'calculateWinner';
   render();
   console.log(questionNumber);
@@ -264,11 +280,30 @@ function calculateWinner() {
     <img src="${movieChoice2[0].Poster}">
     <p>${movieChoice2[0].Plot}</p>
     <button id="restartQuiz">Retake the quiz</button></div>`
-  }
-  else {
-    return `<div><h2>It's a tie!</h2><button id="restartQuiz">Retake the quiz</button></div>`
+  } else {
+    return `<div><h2>It's a tie!</h2><button id="restartQuiz">Retake the quiz</button><button id="coinToss">Flip a coin!</button></div>`
   }
 }
+
+/* COIN TOSS TO DETERMINE A TIE BREAKER */
+function coinToss() {
+  let coinFlip = Math.round(Math.random()) + 1;
+  console.log(coinFlip);
+  if (coinFlip === 1) {
+    return `<div><h2>We Have a Winner!</h2><h3>${movieChoice1[0].Title}</h3>
+    <img src="${movieChoice1[0].Poster}">
+    <p>${movieChoice1[0].Plot}</p>
+    <button id="restartQuiz">Retake the quiz</button>
+    </div>`
+  } else {
+    return `<div><h2>We Have a Winner!</h2><h3>${movieChoice2[0].Title}</h3>
+    <img src="${movieChoice2[0].Poster}">
+    <p>${movieChoice2[0].Plot}</p>
+    <button id="restartQuiz">Retake the quiz</button></div>`
+  }
+}
+
+
 
 /*** INITIALIZER FUNCTION ***/
 function initialize() {
@@ -278,6 +313,7 @@ function initialize() {
   quizStart();
   submitAnswer();
   restartQuiz();
+  coinTossListener();
 }
 
 
