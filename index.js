@@ -58,7 +58,7 @@ function getMovieData(query1, query2) {
       movieChoice2.push(data[1]);
       render();
     }).catch(function (error) {
-      alert('error');
+      alert('Something went wrong, please try again.');
     });
   STORE.page = 'preview';
   render();
@@ -111,6 +111,8 @@ function generateMoviePreview() {
   <p>${movieChoice2[0].Plot}</p>
   </article>
   <button class="start-quiz">Let's Go!</button>
+  <h4>Didn't find what you're looking for? Double check your spelling and try again!</h4>
+  <button id="restartQuiz">Retake the quiz</button>
   </div>`;
 }
 
