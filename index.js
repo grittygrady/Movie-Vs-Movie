@@ -272,12 +272,16 @@ function calculateWinner() {
   if (movie1Score > movie2Score) {
     return `<div><h2>We Have a Winner!</h2><h3>${movieChoice1[0].Title}</h3>
     <img src="${movieChoice1[0].Poster}">
+    <p>${movieChoice1[0].Runtime} ${movieChoice1[0].Rated}</p>
+    <p>Rotten Tomatoes Score: ${movieChoice1[0].Ratings[1].Value}</p>
     <p>${movieChoice1[0].Plot}</p>
     <button id="restartQuiz">Retake the quiz</button>
     </div>`
   } else if (movie2Score > movie1Score) {
     return `<div><h2>We Have a Winner!</h2><h3>${movieChoice2[0].Title}</h3>
     <img src="${movieChoice2[0].Poster}">
+    <p>${movieChoice2[0].Runtime} ${movieChoice2[0].Rated}</p>
+    <p>Rotten Tomatoes Score: ${movieChoice2[0].Ratings[1].Value}</p>
     <p>${movieChoice2[0].Plot}</p>
     <button id="restartQuiz">Retake the quiz</button></div>`
   } else {
@@ -292,12 +296,16 @@ function coinToss() {
   if (coinFlip === 1) {
     return `<div><h2>We Have a Winner!</h2><h3>${movieChoice1[0].Title}</h3>
     <img src="${movieChoice1[0].Poster}">
+    <p>${movieChoice1[0].Runtime} ${movieChoice1[0].Rated}</p>
+    <p>Rotten Tomatoes Score: ${movieChoice1[0].Ratings[1].Value}</p>
     <p>${movieChoice1[0].Plot}</p>
     <button id="restartQuiz">Retake the quiz</button>
     </div>`
   } else {
     return `<div><h2>We Have a Winner!</h2><h3>${movieChoice2[0].Title}</h3>
     <img src="${movieChoice2[0].Poster}">
+    <p>${movieChoice2[0].Runtime} ${movieChoice2[0].Rated}</p>
+    <p>Rotten Tomatoes Score: ${movieChoice2[0].Ratings[1].Value}</p>
     <p>${movieChoice2[0].Plot}</p>
     <button id="restartQuiz">Retake the quiz</button></div>`
   }
