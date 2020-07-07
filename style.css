@@ -45,6 +45,8 @@ header {
 
 .btn {
   margin-bottom: 1.5rem;
+  border-radius: 7px;
+  padding: 1rem;
 }
 
 header p {
@@ -65,8 +67,6 @@ input[type=text] {
   margin-bottom: 0.5rem;
 }
 
-
-
 .container {
   width: 80vw;
   margin: auto;
@@ -79,7 +79,21 @@ input[type=text] {
   max-width: 35vw;
 }
 
-.quiz-form {
+label[class="answers"]{
+  color: antiquewhite;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  background-color: #313131;
+  border-radius: 7px;
+  box-shadow: 3px 3px 5px 2px black;
+  margin-bottom: 2rem;
+  padding: 1.1rem;
+  padding-bottom: 1.4rem;
+  font-size: 2rem;
+}
+
+form {
+  font-size: 1.5rem;
 }
