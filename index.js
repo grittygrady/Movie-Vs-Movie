@@ -8,7 +8,8 @@ const STORE = {
     ["Something longer", "Let's keep it shorter", "No preference"],
     ["Bring it on", "Family friendly", "No preference"]
   ]
-};
+
+}
 
 /*** GLOBAL VARIABLES ***/
 const apikey = 'd00e9638';
@@ -25,7 +26,7 @@ let questionNumber = 0;
 /*** FORMAT FUNCTIONS ***/
 function formatQueryParams(params) {
   const queryItems = Object.keys(params)
-    .map(key => `${key}=${params[key]}`);
+    .map(key => `${key}=${params[key]}`)
   return queryItems.join('&');
 }
 
@@ -38,9 +39,9 @@ function getMovieData(query1, query2) {
   const params2 = {
     apikey: apikey,
     t: query2
-  };
-  const queryString1 = formatQueryParams(params1);
-  const queryString2 = formatQueryParams(params2);
+  }
+  const queryString1 = formatQueryParams(params1)
+  const queryString2 = formatQueryParams(params2)
   const url1 = searchURL + '&' + queryString1;
   const url2 = searchURL + '&' + queryString2;
 
@@ -55,12 +56,11 @@ function getMovieData(query1, query2) {
     }).then(function (data) {
       movieChoice1.push(data[0]);
       movieChoice2.push(data[1]);
+      STORE.page = 'preview';
       render();
     }).catch(function (error) {
       alert('Something went wrong, please try again.');
-    });
-  STORE.page = 'preview';
-  render();
+    });  
 }
 
 
@@ -91,13 +91,15 @@ function generateLanding() {
   return `<div class="start-page">
   <h2>Enter 2 movies and we'll help decide what to watch!</h2>
   <form id="movie-search">
-    <label for="movie1">Movie 1: </label>
+    <label for="movie1">Movie 1:</label>
     <input type="text" name="movie1" id="movie1" placeholder="Search for a movie" required>
-    <label for="movie2">Movie 2: </label>
+    <br>
+    <label for="movie2">Movie 2:</label>
     <input type="text" name="movie2" id="movie2" placeholder="Search for a movie" required>
+    <br>
     <input type="submit" value="Submit" id="submitMovie">
   </form>
-</div>`;
+</div>`
 }
 
 function generateMoviePreview() {
@@ -109,9 +111,9 @@ function generateMoviePreview() {
   <img src="${movieChoice2[0].Poster}">
   <p>${movieChoice2[0].Plot}</p>
   </article>
-  <button class="start-quiz">Let's Go!</button>
+  <button class="btn start-quiz">Let's Go!</button>
   <h4>Didn't find what you're looking for? Double check your spelling and try again!</h4>
-  <button id="restartQuiz">Retake the quiz</button>
+  <button class="btn" id="restartQuiz">Retake the quiz</button>
   </div>`;
 }
 
@@ -119,13 +121,13 @@ function generateQuiz() {
   return `<div class="quiz-portion">
   <h2>${STORE.question[questionNumber]}</h2>
   <form class="quiz-form">
-      <label for="high">
+      <label for="high" class="answers">
       <input type="radio" name="answer" value="high" id="high" required>
       ${STORE.answer[questionNumber][0]}</label>
-      <label for="medium">
+      <label for="medium" class="answers">
       <input type="radio" name="answer" value="medium" id="medium" required>
       ${STORE.answer[questionNumber][1]}</label>
-      <label for="low">
+      <label for="low" class="answers">
       <input type="radio" name="answer" value="low" id="low" required>
       ${STORE.answer[questionNumber][2]}</label>
       <br>
@@ -188,7 +190,7 @@ function restartQuiz() {
 }
 
 function coinTossListener() {
-  $('main').on('click', '#coinToss', function () {
+  $('main').on('click', '#coinToss', function (event) {
     coinToss();
     STORE.page = "tieResults";
     render();
@@ -279,17 +281,17 @@ function calculateWinner() {
     <p>Runtime: ${movieChoice1[0].Runtime} Rated ${movieChoice1[0].Rated}</p>
     <p>Rotten Tomatoes Score: ${movieChoice1[0].Ratings[1].Value}</p>
     <p>${movieChoice1[0].Plot}</p>
-    <button id="restartQuiz">Retake the quiz</button>
-    </div>`;
+    <button class="btn" id="restartQuiz">Retake the quiz</button>
+    </div>`
   } else if (movie2Score > movie1Score) {
     return `<div><h2>We Have a Winner!</h2><h3>${movieChoice2[0].Title}</h3>
     <img src="${movieChoice2[0].Poster}">
     <p>Runtime: ${movieChoice2[0].Runtime} Rated ${movieChoice2[0].Rated}</p>
     <p>Rotten Tomatoes Score: ${movieChoice2[0].Ratings[1].Value}</p>
     <p>${movieChoice2[0].Plot}</p>
-    <button id="restartQuiz">Retake the quiz</button></div>`;
+    <button class="btn" id="restartQuiz">Retake the quiz</button></div>`
   } else {
-    return `<div><h2>It's a tie!</h2><button id="restartQuiz">Retake the quiz</button><button id="coinToss">Flip a coin!</button></div>`;
+    return `<div><h2>It's a tie!</h2><button class="btn" id="restartQuiz">Retake the quiz</button><button class="btn" id="coinToss">Flip a coin!</button></div>`
   }
 }
 
@@ -303,7 +305,7 @@ function coinToss() {
     <p>Runtime: ${movieChoice1[0].Runtime} Rated ${movieChoice1[0].Rated}</p>
     <p>Rotten Tomatoes Score: ${movieChoice1[0].Ratings[1].Value}</p>
     <p>${movieChoice1[0].Plot}</p>
-    <button id="restartQuiz">Retake the quiz</button>
+    <button class="btn" id="restartQuiz">Retake the quiz</button>
     </div>`
   } else {
     return `<div><h2>We Have a Winner!</h2><h3>${movieChoice2[0].Title}</h3>
@@ -311,7 +313,7 @@ function coinToss() {
     <p>Runtime: ${movieChoice2[0].Runtime} Rated ${movieChoice2[0].Rated}</p>
     <p>Rotten Tomatoes Score: ${movieChoice2[0].Ratings[1].Value}</p>
     <p>${movieChoice2[0].Plot}</p>
-    <button id="restartQuiz">Retake the quiz</button></div>`
+    <button class="btn" id="restartQuiz">Retake the quiz</button></div>`
   }
 }
 
