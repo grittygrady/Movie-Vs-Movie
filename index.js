@@ -118,14 +118,18 @@ function generateMoviePreview() {
 function generateQuiz() {
   return `<div class="quiz-portion">
   <h2>${STORE.question[questionNumber]}</h2>
-  <form>
-      <input type="radio" name="answer" value="high" required>
-      <label for="high">${STORE.answer[questionNumber][0]}</label>
-      <input type="radio" name="answer" value="medium" required>
-      <label for="medium">${STORE.answer[questionNumber][1]}</label>
-      <input type="radio" name="answer" value="low" required>
-      <label for="low">${STORE.answer[questionNumber][2]}</label>
-      <button type="submit" class="submitButton" id="submitAnswer">Submit</button>
+  <form class="quiz-form">
+      <label for="high">
+      <input type="radio" name="answer" value="high" id="high" required>
+      ${STORE.answer[questionNumber][0]}</label>
+      <label for="medium">
+      <input type="radio" name="answer" value="medium" id="medium" required>
+      ${STORE.answer[questionNumber][1]}</label>
+      <label for="low">
+      <input type="radio" name="answer" value="low" id="low" required>
+      ${STORE.answer[questionNumber][2]}</label>
+      <br>
+      <button type="submit" class="btn submitButton" id="submitAnswer">Submit</button>
   </form>
 </div>`;
 }
