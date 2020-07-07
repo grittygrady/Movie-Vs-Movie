@@ -190,7 +190,6 @@ function coinTossListener() {
     STORE.page = "tieResults";
     render();
   });
-
 }
 
 /*** HELPER FUNCTIONS ***/
@@ -253,13 +252,13 @@ function adultOrFamily(selected) {
   let movie2Rating = movieChoice2[0].Rated;
   if (selected === "low") {
     console.log("no preference");
-  } else if (selected === "high" && movie1Rating === "R" || "PG-13") {
+  } else if (selected === "high" && movie1Rating === "R" || movie1Rating === "PG-13") {
     movie1Score += 2;
-  } else if (selected === "high" && movie2Rating === "R" || "PG-13") {
+  } else if (selected === "high" && movie2Rating === "R" || movie2Rating === "PG-13") {
     movie2Score += 2;
-  } else if (selected === "medium" && movie1Rating !== "R" || "PG-13") {
+  } else if (selected === "medium" && movie1Rating !== "R" || movie1Rating !== "PG-13") {
     movie1Score += 2;
-  } else if (selected === "medium" && movie2Rating !== "R" || "PG-13") {
+  } else if (selected === "medium" && movie2Rating !== "R" || movie1Rating !== "PG-13") {
     movie2Score += 2;
   }
   STORE.page = 'calculateWinner';
