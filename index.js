@@ -8,8 +8,7 @@ const STORE = {
     ["Something longer", "Let's keep it shorter", "No preference"],
     ["Bring it on", "Family friendly", "No preference"]
   ]
-
-}
+};
 
 /*** GLOBAL VARIABLES ***/
 const apikey = 'd00e9638';
@@ -26,7 +25,7 @@ let questionNumber = 0;
 /*** FORMAT FUNCTIONS ***/
 function formatQueryParams(params) {
   const queryItems = Object.keys(params)
-    .map(key => `${key}=${params[key]}`)
+    .map(key => `${key}=${params[key]}`);
   return queryItems.join('&');
 }
 
@@ -39,9 +38,9 @@ function getMovieData(query1, query2) {
   const params2 = {
     apikey: apikey,
     t: query2
-  }
-  const queryString1 = formatQueryParams(params1)
-  const queryString2 = formatQueryParams(params2)
+  };
+  const queryString1 = formatQueryParams(params1);
+  const queryString2 = formatQueryParams(params2);
   const url1 = searchURL + '&' + queryString1;
   const url2 = searchURL + '&' + queryString2;
 
@@ -98,7 +97,7 @@ function generateLanding() {
     <input type="text" name="movie2" id="movie2" placeholder="Search for a movie" required>
     <input type="submit" value="Submit" id="submitMovie">
   </form>
-</div>`
+</div>`;
 }
 
 function generateMoviePreview() {
@@ -277,16 +276,16 @@ function calculateWinner() {
     <p>Rotten Tomatoes Score: ${movieChoice1[0].Ratings[1].Value}</p>
     <p>${movieChoice1[0].Plot}</p>
     <button id="restartQuiz">Retake the quiz</button>
-    </div>`
+    </div>`;
   } else if (movie2Score > movie1Score) {
     return `<div><h2>We Have a Winner!</h2><h3>${movieChoice2[0].Title}</h3>
     <img src="${movieChoice2[0].Poster}">
     <p>Runtime: ${movieChoice2[0].Runtime} Rated ${movieChoice2[0].Rated}</p>
     <p>Rotten Tomatoes Score: ${movieChoice2[0].Ratings[1].Value}</p>
     <p>${movieChoice2[0].Plot}</p>
-    <button id="restartQuiz">Retake the quiz</button></div>`
+    <button id="restartQuiz">Retake the quiz</button></div>`;
   } else {
-    return `<div><h2>It's a tie!</h2><button id="restartQuiz">Retake the quiz</button><button id="coinToss">Flip a coin!</button></div>`
+    return `<div><h2>It's a tie!</h2><button id="restartQuiz">Retake the quiz</button><button id="coinToss">Flip a coin!</button></div>`;
   }
 }
 
