@@ -151,13 +151,10 @@ function submitAnswer() {
   });
 }
 
-// FUNCTION TO GENERATE A RESULTS PAGE
 
 /*** HELPER FUNCTIONS ***/
 /* COIN TOSS TO DETERMINE A TIE (MATH)
-    
 
-    DETERMINE WINNER BY COMPARING SCORES
 */
 //DETERMINE DIFFERENCE BETWEEN RATINGS
 function criticWeight(selected) {
@@ -185,25 +182,24 @@ function criticWeight(selected) {
 
 //DETERMINE DIFFERENCE BETWEEN MOVIE LENGTHS
 function movieLength(selected) {
-  //  MAY USE THIS TO CLEAN UP CODE FOR READABILITY
   let movie1Runtime = parseInt(movieChoice1[0].Runtime);
   let movie2Runtime = parseInt(movieChoice2[0].Runtime);
   console.log(movie1Runtime);
   console.log(movie2Runtime);
-  if (movieChoice1[0].Runtime > movieChoice2[0].Runtime && selected === "high") {
+  if (movie1Runtime > movie2Runtime && selected === "high") {
     movie1Score += 2;
     questionNumber++;
-  } else if (movieChoice1[0].Runtime > movieChoice2[0].Runtime && selected === "medium") {
-    movie1Score++;
-    questionNumber++;
-  } else if (movieChoice2[0].Runtime > movieChoice1[0].Runtime && selected === "high") {
-    movie2Score += 2;
-    questionNumber++;
-  } else if (movieChoice2[0].Runtime > movieChoice1[0].Runtime && selected === "medium") {
+  } else if (movie1Runtime > movie2Runtime && selected === "medium") {
     movie2Score++;
     questionNumber++;
+  } else if (movie2Runtime > movie1Runtime && selected === "high") {
+    movie2Score += 2;
+    questionNumber++;
+  } else if (movie2Runtime > movie1Runtime && selected === "medium") {
+    movie1Score++;
+    questionNumber++;
   } else {
-    questionNumber++
+    questionNumber++;
   }
   STORE.page = 'quizPage3';
   render();
@@ -218,13 +214,13 @@ function adultOrFamily(selected) {
   let movie2Rating = movieChoice2[0].Rated;
 
   if (selected === "high" && movie1Rating === "R") {
-    movie1Score++;
+    movie1Score += 2;
   } else if (selected === "high" && movie2Rating === "R") {
-    movie2Score++;
+    movie2Score += 2;
   } else if (selected === "medium" && movie1Rating !== "R") {
-    movie1Score++;
+    movie1Score += 2;
   } else if (selected === "medium" && movie2Rating !== "R") {
-    movie2Score++;
+    movie2Score += 2;
   } 
   STORE.page = 'calculateWinner';
   render();
@@ -236,18 +232,17 @@ function calculateWinner() {
     return `<div><h2>We Have a Winner!</h2><h3>${movieChoice1[0].Title}</h3>
     <img src="${movieChoice1[0].Poster}">
     <p>${movieChoice1[0].Plot}</p>
+    <button id="restartQuiz">Retake the quiz</button>
     </div>`
   } else if (movie2Score > movie1Score) {
     return `<div><h2>We Have a Winner!</h2><h3>${movieChoice2[0].Title}</h3>
     <img src="${movieChoice2[0].Poster}">
-    <p>${movieChoice2[0].Plot}</p></div>`
+    <p>${movieChoice2[0].Plot}</p>
+    <button id="restartQuiz">Retake the quiz</button></div>`
   }
   else {
-    // itsATie();
-    alert("its a tie")
+    return `<div><h2>It's a tie!</h2><button id="restartQuiz">Retake the quiz</button></div>`
   }
-  STORE.page = 'quizResults';
-  render();
 }
 
 /*** INITIALIZER FUNCTION ***/
