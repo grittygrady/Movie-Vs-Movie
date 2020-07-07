@@ -56,12 +56,11 @@ function getMovieData(query1, query2) {
     }).then(function (data) {
       movieChoice1.push(data[0]);
       movieChoice2.push(data[1]);
+      STORE.page = 'preview';
       render();
     }).catch(function (error) {
       alert('Something went wrong, please try again.');
-    });
-  STORE.page = 'preview';
-  render();
+    });  
 }
 
 
