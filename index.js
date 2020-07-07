@@ -92,10 +92,12 @@ function generateLanding() {
   return `<div class="start-page">
   <h2>Enter 2 movies and we'll help decide what to watch!</h2>
   <form id="movie-search">
-    <label for="movie1">Movie 1: </label>
+    <label for="movie1">Movie 1:</label>
     <input type="text" name="movie1" id="movie1" placeholder="Search for a movie" required>
-    <label for="movie2">Movie 2: </label>
+    <br>
+    <label for="movie2">Movie 2:</label>
     <input type="text" name="movie2" id="movie2" placeholder="Search for a movie" required>
+    <br>
     <input type="submit" value="Submit" id="submitMovie">
   </form>
 </div>`
@@ -110,23 +112,24 @@ function generateMoviePreview() {
   <img src="${movieChoice2[0].Poster}">
   <p>${movieChoice2[0].Plot}</p>
   </article>
-  <button class="start-quiz">Let's Go!</button>
+  <button class="btn start-quiz">Let's Go!</button>
   <h4>Didn't find what you're looking for? Double check your spelling and try again!</h4>
-  <button id="restartQuiz">Retake the quiz</button>
+  <button class="btn" id="restartQuiz">Retake the quiz</button>
   </div>`;
 }
 
 function generateQuiz() {
   return `<div class="quiz-portion">
   <h2>${STORE.question[questionNumber]}</h2>
-  <form>
+  <form class="quiz-form">
       <input type="radio" name="answer" value="high" required>
       <label for="high">${STORE.answer[questionNumber][0]}</label>
       <input type="radio" name="answer" value="medium" required>
       <label for="medium">${STORE.answer[questionNumber][1]}</label>
       <input type="radio" name="answer" value="low" required>
       <label for="low">${STORE.answer[questionNumber][2]}</label>
-      <button type="submit" class="submitButton" id="submitAnswer">Submit</button>
+      <br>
+      <button type="submit" class="btn submitButton" id="submitAnswer">Submit</button>
   </form>
 </div>`;
 }
@@ -276,7 +279,7 @@ function calculateWinner() {
     <p>Runtime: ${movieChoice1[0].Runtime} Rated ${movieChoice1[0].Rated}</p>
     <p>Rotten Tomatoes Score: ${movieChoice1[0].Ratings[1].Value}</p>
     <p>${movieChoice1[0].Plot}</p>
-    <button id="restartQuiz">Retake the quiz</button>
+    <button class="btn" id="restartQuiz">Retake the quiz</button>
     </div>`
   } else if (movie2Score > movie1Score) {
     return `<div><h2>We Have a Winner!</h2><h3>${movieChoice2[0].Title}</h3>
@@ -284,9 +287,9 @@ function calculateWinner() {
     <p>Runtime: ${movieChoice2[0].Runtime} Rated ${movieChoice2[0].Rated}</p>
     <p>Rotten Tomatoes Score: ${movieChoice2[0].Ratings[1].Value}</p>
     <p>${movieChoice2[0].Plot}</p>
-    <button id="restartQuiz">Retake the quiz</button></div>`
+    <button class="btn" id="restartQuiz">Retake the quiz</button></div>`
   } else {
-    return `<div><h2>It's a tie!</h2><button id="restartQuiz">Retake the quiz</button><button id="coinToss">Flip a coin!</button></div>`
+    return `<div><h2>It's a tie!</h2><button class="btn" id="restartQuiz">Retake the quiz</button><button class="btn" id="coinToss">Flip a coin!</button></div>`
   }
 }
 
@@ -300,7 +303,7 @@ function coinToss() {
     <p>Runtime: ${movieChoice1[0].Runtime} Rated ${movieChoice1[0].Rated}</p>
     <p>Rotten Tomatoes Score: ${movieChoice1[0].Ratings[1].Value}</p>
     <p>${movieChoice1[0].Plot}</p>
-    <button id="restartQuiz">Retake the quiz</button>
+    <button class="btn" id="restartQuiz">Retake the quiz</button>
     </div>`
   } else {
     return `<div><h2>We Have a Winner!</h2><h3>${movieChoice2[0].Title}</h3>
@@ -308,7 +311,7 @@ function coinToss() {
     <p>Runtime: ${movieChoice2[0].Runtime} Rated ${movieChoice2[0].Rated}</p>
     <p>Rotten Tomatoes Score: ${movieChoice2[0].Ratings[1].Value}</p>
     <p>${movieChoice2[0].Plot}</p>
-    <button id="restartQuiz">Retake the quiz</button></div>`
+    <button class="btn" id="restartQuiz">Retake the quiz</button></div>`
   }
 }
 
