@@ -4,11 +4,11 @@
 font-family: 'Lato', sans-serif;
 font-family: 'Staatliches', cursive;
 */
-/* input {
+input {
   -webkit-appearance: none;
   -moz-appearance: none;
   
-  } */
+  }
 
 * {
   box-sizing: border-box;
@@ -103,7 +103,7 @@ label:hover, label:focus {
   background-color: #af0404;
 }
 
-input[type="radio"]:checked {
+input[type="radio"]:checked + label {
   background-color: #ff0000;
 }
 
