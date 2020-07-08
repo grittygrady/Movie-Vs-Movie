@@ -4,6 +4,11 @@
 font-family: 'Lato', sans-serif;
 font-family: 'Staatliches', cursive;
 */
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  
+  }
 
 * {
   box-sizing: border-box;
