@@ -50,8 +50,12 @@ header {
 
 .btn {
   margin-bottom: 1.5rem;
+  border: none;
   border-radius: 7px;
   padding: 1rem;
+  background-color: #313131;
+  color: antiquewhite;
+  box-shadow: 3px 3px 4px 2px black;
 }
 
 header p {
