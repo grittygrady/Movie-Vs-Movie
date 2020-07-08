@@ -121,15 +121,13 @@ function generateQuiz() {
   return `<div class="quiz-portion">
   <h2>${STORE.question[questionNumber]}</h2>
   <form class="quiz-form">
-      <label for="high" class="answers">
+      
       <input type="radio" name="answer" value="high" id="high" required>
-      ${STORE.answer[questionNumber][0]}</label>
-      <label for="medium" class="answers">
+      <label for="high" class="answers">${STORE.answer[questionNumber][0]}</label>
       <input type="radio" name="answer" value="medium" id="medium" required>
-      ${STORE.answer[questionNumber][1]}</label>
-      <label for="low" class="answers">
+      <label for="medium" class="answers">${STORE.answer[questionNumber][1]}</label>
       <input type="radio" name="answer" value="low" id="low" required>
-      ${STORE.answer[questionNumber][2]}</label>
+      <label for="low" class="answers">${STORE.answer[questionNumber][2]}</label>
       <br>
       <button type="submit" class="btn submitButton" id="submitAnswer">Submit</button>
   </form>
