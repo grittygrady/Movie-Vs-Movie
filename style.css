@@ -58,6 +58,10 @@ header {
   box-shadow: 3px 3px 4px 2px black;
 }
 
+button:hover, button:focus {
+  background-color: #af0404;
+}
+
 header p {
   color: antiquewhite;
   font-size: 1.4rem;
