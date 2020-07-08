@@ -289,7 +289,9 @@ function calculateWinner() {
     <p>${movieChoice2[0].Plot}</p>
     <button class="btn" id="restartQuiz">Retake the quiz</button></div>`
   } else {
-    return `<div><h2>It's a tie!</h2><button class="btn" id="restartQuiz">Retake the quiz</button><button class="btn" id="coinToss">Flip a coin!</button></div>`
+    return `<div><h2>It's a tie!</h2><button class="btn" id="restartQuiz">Retake the quiz</button>
+    <br>
+    <button class="btn" id="coinToss">Flip a coin!</button></div>`
   }
 }
 
