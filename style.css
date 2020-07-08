@@ -4,11 +4,11 @@
 font-family: 'Lato', sans-serif;
 font-family: 'Staatliches', cursive;
 */
-input {
+/* input {
   -webkit-appearance: none;
   -moz-appearance: none;
   
-  }
+  } */
 
 * {
   box-sizing: border-box;
@@ -97,6 +97,14 @@ label[class="answers"]{
   padding: 1.1rem;
   padding-bottom: 1.4rem;
   font-size: 2rem;
+}
+
+label:hover, label:focus {
+  background-color: #af0404;
+}
+
+input[type="radio"]:checked {
+  background-color: #ff0000;
 }
 
 form {
