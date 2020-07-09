@@ -104,7 +104,7 @@ function generateLanding() {
 
 function generateMoviePreview() {
   if (movieChoice1[0].Response === "False" || movieChoice2[0].Response === "False") {
-    return `<div><h2>Sorry, we couldn't find on of those movies. Double check your spelling and try again!</h2><button class="btn" id="restartQuiz">Retry</button></div>`
+    return `<div><h2>Sorry, we couldn't find one of those movies. Double check your spelling and try again!</h2><button class="btn" id="restartQuiz">Retry</button></div>`
   } else {
   return `<div><article><h3>${movieChoice1[0].Title}</h3>
   <img src="${movieChoice1[0].Poster}">
