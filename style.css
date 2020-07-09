@@ -46,7 +46,6 @@ header {
   text-align: center;
   width: 100vw;
   margin: auto;
-  border-bottom: 2px solid black;
 }
 
 .btn {
@@ -81,10 +80,7 @@ input[type=text] {
   -webkit-appearance: none;
   -moz-appearance: none;
   margin-left: 0.5rem;
-  margin-bottom: 0.75rem;
-  border-radius: 7px;
-  border: none;
-  box-shadow: 2px 2px 1px 1px black;
+  margin-bottom: 0.5rem;
 }
 
 .container {
@@ -95,13 +91,8 @@ input[type=text] {
 
 .submitButton {
   align-self: center;
-  margin-top: 0.5rem;
+  margin-top: 0.7rem;
   max-width: 35vw;
-}
-
-label[class="movie-form"] {
-  padding-bottom: 1.5rem;
-  margin-bottom: 1rem;
 }
 
 label[class="answers"]{
@@ -113,19 +104,16 @@ label[class="answers"]{
   background-color: #313131;
   border-radius: 7px;
   box-shadow: 3px 3px 5px 2px black;
-  margin-bottom: 1rem;
-  padding: 1.1rem;
-  padding-bottom: 1.4rem;
+  margin-bottom: 1.5rem;
+  padding: 0.7rem;
+  padding-bottom: 1rem;
   font-size: 2rem;
 }
 
-label[class="answers"]:hover, label[class="answers"]:focus {
+label:hover, label:focus {
   background-color: #af0404;
 }
 
-input[type="radio"] {
-  opacity: 0;
-}
 input[type="radio"]:checked + label {
   background-color: #ff0000;
   color: black;
