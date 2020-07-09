@@ -91,13 +91,13 @@ function generateLanding() {
   return `<div class="start-page">
   <h2>Enter 2 movies and we'll help decide what to watch!</h2>
   <form id="movie-search">
-    <label for="movie1">Movie 1:</label>
+    <label for="movie1" class="movie-form">Movie 1:</label>
     <input type="text" name="movie1" id="movie1" placeholder="Search for a movie" required>
     <br>
-    <label for="movie2">Movie 2:</label>
+    <label for="movie2" class="movie-form">Movie 2:</label>
     <input type="text" name="movie2" id="movie2" placeholder="Search for a movie" required>
     <br>
-    <input type="submit" value="Submit" id="submitMovie">
+    <button type="submit" value="Submit" class="btn" id="submitMovie">Submit</button>
   </form>
 </div>`
 }
