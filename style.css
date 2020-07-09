@@ -46,6 +46,7 @@ header {
   text-align: center;
   width: 100vw;
   margin: auto;
+  border-bottom: 2px solid black;
 }
 
 .btn {
