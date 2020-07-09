@@ -77,6 +77,8 @@ body {
 }
 
 input[type=text] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
   margin-left: 0.5rem;
   margin-bottom: 0.5rem;
 }
