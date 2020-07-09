@@ -103,6 +103,9 @@ function generateLanding() {
 }
 
 function generateMoviePreview() {
+  if (movieChoice1[0].Response === "False" || movieChoice2[0].Response === "False") {
+    return `<div><h2>Sorry, we couldn't find on of those movies. Double check your spelling and try again!</h2><button class="btn" id="restartQuiz">Retry</button></div>`
+  } else {
   return `<div><article><h3>${movieChoice1[0].Title}</h3>
   <img src="${movieChoice1[0].Poster}">
   <p>${movieChoice1[0].Plot}</p>
@@ -113,8 +116,9 @@ function generateMoviePreview() {
   </article>
   <button class="btn start-quiz">Let's Go!</button>
   <h4>Didn't find what you're looking for? Double check your spelling and try again!</h4>
-  <button class="btn" id="restartQuiz">Retake the quiz</button>
+  <button class="btn" id="restartQuiz">Restart the quiz</button>
   </div>`;
+  }
 }
 
 function generateQuiz() {
