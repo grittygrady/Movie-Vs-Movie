@@ -137,19 +137,13 @@ function generateQuiz() {
   </form>
 </div>`;
 }
-console.log(movieChoice1);
-console.log(movieChoice2);
-
 
 /*** EVENT LISTENER FUNCTIONS ***/
 function formListener() {
   $('main').on('click', '#submitMovie', function (event) {
     event.preventDefault();
-    console.log('Form Submitted'); //FOR TESTING PURPOSES
     const searchTerm1 = $('#movie1').val();
     const searchTerm2 = $('#movie2').val();
-    console.log(searchTerm1);
-    console.log(searchTerm2); //FOR TESTING PURPOSES
     getMovieData(searchTerm1, searchTerm2);
   });
 }
@@ -165,7 +159,6 @@ function submitAnswer() {
   $('main').on('click', '#submitAnswer', function (event) {
     event.preventDefault();
     let selected = $('input:checked').val();
-    console.log(selected);
     if (STORE.page === 'quizPage1') {
       criticWeight(selected);
     } else if (STORE.page === 'quizPage2') {
@@ -220,17 +213,12 @@ function criticWeight(selected) {
   }
   STORE.page = 'quizPage2';
   render();
-  console.log(questionNumber);
-  console.log(movie1Score);
-  console.log(movie2Score);
 }
 
 //DETERMINE DIFFERENCE BETWEEN MOVIE LENGTHS
 function movieLength(selected) {
   let movie1Runtime = parseInt(movieChoice1[0].Runtime);
   let movie2Runtime = parseInt(movieChoice2[0].Runtime);
-  console.log(movie1Runtime);
-  console.log(movie2Runtime);
   if (movie1Runtime > movie2Runtime && selected === "high") {
     movie1Score += 2;
     questionNumber++;
@@ -248,9 +236,6 @@ function movieLength(selected) {
   }
   STORE.page = 'quizPage3';
   render();
-  console.log(questionNumber);
-  console.log(movie1Score);
-  console.log(movie2Score);
 }
 
 // DETERMINE DIFFERENCE BETWEEN MPAA RATINGS
@@ -270,9 +255,6 @@ function adultOrFamily(selected) {
   }
   STORE.page = 'calculateWinner';
   render();
-  console.log(questionNumber);
-  console.log(movie1Score);
-  console.log(movie2Score);
 }
 
 //DETERMINE WINNER BY COMPARING SCORES
@@ -302,7 +284,6 @@ function calculateWinner() {
 /* COIN TOSS TO DETERMINE A TIE BREAKER */
 function coinToss() {
   let coinFlip = Math.round(Math.random()) + 1;
-  console.log(coinFlip);
   if (coinFlip === 1) {
     return `<div><h2>We Have a Winner!</h2><h3 class="movie-title">${movieChoice1[0].Title}</h3><div class="results-grid">
     <img src="${movieChoice1[0].Poster}" class="movie-poster">
@@ -325,7 +306,6 @@ function coinToss() {
 
 /*** INITIALIZER FUNCTION ***/
 function initialize() {
-  console.log('Ready, awaiting input');
   formListener();
   render();
   quizStart();
