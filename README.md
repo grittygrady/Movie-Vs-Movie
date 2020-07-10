@@ -12,10 +12,12 @@ Quiz Page
 Winner Page
 <hr>
 Live at https://grittygrady.github.io/Movie-Vs-Movie/
-<ul>Built with:
+<ul>
+Built with:
   <li>HTML</li>
   <li>CSS</li>
   <li>JavaScript</li>
   <li>jQuery</li>
  </ul>
+ 
 Created by Christopher Grady, using the OMDB API.
