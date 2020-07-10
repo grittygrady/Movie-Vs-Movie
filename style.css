@@ -127,7 +127,7 @@ form {
   font-size: 1.5rem;
 }
 
-@media (min-width:1000px) {
+@media (min-width:1100px) {
   h1 {
     font-size: 5rem;
     padding-top: 0.7rem;
@@ -205,12 +205,13 @@ form {
     justify-content: center;
     grid-column-start: 1;
     grid-template-columns: 35% 35%;
-    grid-template-rows: auto;
+    grid-template-rows: 20% 20% 20% 20% 20% 20%;
     grid-template-areas: 
     "movie-poster runtime-rating" 
     "movie-poster rt-score"
     "movie-poster plot"
-    ;
+    "movie-poster ."
+    "movie-poster .";
   }
 
   .movie-title {
@@ -228,9 +229,11 @@ form {
 
   .runtime-rating {
     grid-area: runtime-rating;
+    align-self: start;
   }
 
   .rt-score {
     grid-area: rt-score;
+    align-self: start;
   }
 }
