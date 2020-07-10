@@ -10,6 +10,7 @@ Landing Page
 Quiz Page
 <img src="https://github.com/grittygrady/Movie-Vs-Movie/blob/master/previews/winner-page.png">
 Winner Page
+<hr>
 Live at https://grittygrady.github.io/Movie-Vs-Movie/
 <ul>Built with:
   <li>HTML</li>
