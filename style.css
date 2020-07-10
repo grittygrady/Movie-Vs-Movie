@@ -190,6 +190,16 @@ form {
     ;
   }
 
+  /* .results-grid {
+    display: grid;
+    grid-template-columns: 40% 40%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    'movie-title movie-title'
+    'movie-poster runtime-rating'
+    'movie-poster plot';
+  } */
+
   .results-grid {
     display: grid;
     justify-content: center;
