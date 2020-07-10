@@ -60,7 +60,7 @@ function getMovieData(query1, query2) {
       render();
     }).catch(function (error) {
       alert('Something went wrong, please try again.');
-    });  
+    });
 }
 
 
@@ -106,7 +106,7 @@ function generateMoviePreview() {
   if (movieChoice1[0].Response === "False" || movieChoice2[0].Response === "False") {
     return `<div><h2>Sorry, we couldn't find one of those movies. Double check your spelling and try again!</h2><button class="btn" id="restartQuiz">Retry</button></div>`
   } else {
-  return `<div><div class="movie-grid"><article><h3 class="movie-title">${movieChoice1[0].Title}</h3>
+    return `<div><div class="movie-grid"><article><h3 class="movie-title">${movieChoice1[0].Title}</h3>
   <img src="${movieChoice1[0].Poster}" class="movie-poster">
   <p class="plot">${movieChoice1[0].Plot}</p>
   </article>

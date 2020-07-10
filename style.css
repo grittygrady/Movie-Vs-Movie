@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=Staatliches&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Staatliches&display=swap");
 
 /* CSS RULES FOR FONTS 
 font-family: 'Lato', sans-serif;
@@ -7,18 +7,24 @@ font-family: 'Staatliches', cursive;
 input {
   -webkit-appearance: none;
   -moz-appearance: none;
-  }
+}
 
 * {
   box-sizing: border-box;
 }
 
-h1, h2, h3 {
-  font-family: 'Staatliches', cursive;
+h1,
+h2,
+h3 {
+  font-family: "Staatliches", cursive;
   letter-spacing: 0.2rem;
 }
 
-h2, h3, h4, p, form {
+h2,
+h3,
+h4,
+p,
+form {
   color: antiquewhite;
 }
 
@@ -34,8 +40,11 @@ h3 {
   font-size: 2rem;
 }
 
-h4, p, form, .btn {
-  font-family: 'Lato', sans-serif;
+h4,
+p,
+form,
+.btn {
+  font-family: "Lato", sans-serif;
 }
 
 header {
@@ -60,7 +69,8 @@ header {
   font-size: 1.5rem;
 }
 
-button:hover, button:focus {
+button:hover,
+button:focus {
   background-color: #af0404;
 }
 
@@ -77,7 +87,7 @@ body {
   background-repeat: no-repeat;
 }
 
-input[type=text] {
+input[type="text"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   margin-left: 0.5rem;
@@ -99,7 +109,7 @@ input[type=text] {
   max-width: 35vw;
 }
 
-label[class="answers"]{
+label[class="answers"] {
   color: antiquewhite;
   cursor: pointer;
   display: flex;
@@ -114,7 +124,8 @@ label[class="answers"]{
   font-size: 2rem;
 }
 
-label[class="answers"]:hover, label[class="answers"]:focus {
+label[class="answers"]:hover,
+label[class="answers"]:focus {
   background-color: #af0404;
 }
 
@@ -127,7 +138,7 @@ form {
   font-size: 1.5rem;
 }
 
-@media (min-width:1100px) {
+@media (min-width: 1100px) {
   h1 {
     font-size: 5rem;
     padding-top: 0.7rem;
@@ -164,7 +175,7 @@ form {
     font-size: 1.5rem;
   }
 
-  input[type=text] {
+  input[type="text"] {
     margin-left: 0.5rem;
     margin-bottom: 1.5rem;
     border: none;
@@ -185,9 +196,8 @@ form {
     display: grid;
     gap: 2rem;
     grid-template-areas:
-    'movie-title movie-title'
-    'movie-poster plot'
-    ;
+      "movie-title movie-title"
+      "movie-poster plot";
   }
 
   /* .results-grid {
@@ -206,12 +216,12 @@ form {
     grid-column-start: 1;
     grid-template-columns: 35% 35%;
     grid-template-rows: 20% 20% 20% 20% 20% 20%;
-    grid-template-areas: 
-    "movie-poster runtime-rating" 
-    "movie-poster rt-score"
-    "movie-poster plot"
-    "movie-poster ."
-    "movie-poster .";
+    grid-template-areas:
+      "movie-poster runtime-rating"
+      "movie-poster rt-score"
+      "movie-poster plot"
+      "movie-poster ."
+      "movie-poster .";
   }
 
   .movie-title {
