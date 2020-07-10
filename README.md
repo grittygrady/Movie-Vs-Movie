@@ -5,4 +5,16 @@ A quick, easy to use web application to help 2 people decide upon a movie, in a 
 <hr>
 <h3>Screenshots</h3>
 <img src="https://github.com/grittygrady/Movie-Vs-Movie/blob/master/previews/landing-page.png">
-Live (in progress) at https://grittygrady.github.io/Movie-Vs-Movie/
+Landing Page
+<img src="https://github.com/grittygrady/Movie-Vs-Movie/blob/master/previews/quiz-page.png">
+Quiz Page
+<img src="https://github.com/grittygrady/Movie-Vs-Movie/blob/master/previews/winner-page.png">
+Winner Page
+Live at https://grittygrady.github.io/Movie-Vs-Movie/
+<ul>Built with:
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>JavaScript</li>
+  <li>jQuery</li>
+ </ul>
+Created by Christopher Grady, using the OMDB API.
