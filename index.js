@@ -106,14 +106,14 @@ function generateMoviePreview() {
   if (movieChoice1[0].Response === "False" || movieChoice2[0].Response === "False") {
     return `<div><h2>Sorry, we couldn't find one of those movies. Double check your spelling and try again!</h2><button class="btn" id="restartQuiz">Retry</button></div>`
   } else {
-  return `<div><article><h3>${movieChoice1[0].Title}</h3>
-  <img src="${movieChoice1[0].Poster}">
-  <p>${movieChoice1[0].Plot}</p>
+  return `<div><div class="movie-grid"><article><h3 class="movie-title">${movieChoice1[0].Title}</h3>
+  <img src="${movieChoice1[0].Poster}" class="movie-poster">
+  <p class="plot">${movieChoice1[0].Plot}</p>
   </article>
   <article><h3>${movieChoice2[0].Title}</h3>
   <img src="${movieChoice2[0].Poster}">
   <p>${movieChoice2[0].Plot}</p>
-  </article>
+  </article></div>
   <button class="btn start-quiz">Let's Go!</button>
   <h4>Didn't find what you're looking for? Double check your spelling and try again!</h4>
   <button class="btn" id="restartQuiz">Restart the quiz</button>
@@ -304,19 +304,19 @@ function coinToss() {
   let coinFlip = Math.round(Math.random()) + 1;
   console.log(coinFlip);
   if (coinFlip === 1) {
-    return `<div><h2>We Have a Winner!</h2><h3>${movieChoice1[0].Title}</h3>
-    <img src="${movieChoice1[0].Poster}">
-    <p>Runtime: ${movieChoice1[0].Runtime} Rated ${movieChoice1[0].Rated}</p>
-    <p>Rotten Tomatoes Score: ${movieChoice1[0].Ratings[1].Value}</p>
-    <p>${movieChoice1[0].Plot}</p>
+    return `<div><h2>We Have a Winner!</h2><h3 class="movie-title">${movieChoice1[0].Title}</h3><div class="results-grid">
+    <img src="${movieChoice1[0].Poster}" class="movie-poster">
+    <p class="runtime-rating">Runtime: ${movieChoice1[0].Runtime} Rated ${movieChoice1[0].Rated}</p>
+    <p class="rt-score">Rotten Tomatoes Score: ${movieChoice1[0].Ratings[1].Value}</p>
+    <p class="plot">${movieChoice1[0].Plot}</p></div>
     <button class="btn" id="restartQuiz">Retake the quiz</button>
     </div>`
   } else {
-    return `<div><h2>We Have a Winner!</h2><h3>${movieChoice2[0].Title}</h3>
-    <img src="${movieChoice2[0].Poster}">
-    <p>Runtime: ${movieChoice2[0].Runtime} Rated ${movieChoice2[0].Rated}</p>
-    <p>Rotten Tomatoes Score: ${movieChoice2[0].Ratings[1].Value}</p>
-    <p>${movieChoice2[0].Plot}</p>
+    return `<div><h2>We Have a Winner!</h2><h3 class="movie-title">${movieChoice2[0].Title}</h3><div class="results-grid">
+    <img src="${movieChoice2[0].Poster}" class="movie-poster">
+    <p class="runtime-rating">Runtime: ${movieChoice2[0].Runtime} Rated ${movieChoice2[0].Rated}</p>
+    <p class="rt-score">Rotten Tomatoes Score: ${movieChoice2[0].Ratings[1].Value}</p>
+    <p class="plot">${movieChoice2[0].Plot}</p></div>
     <button class="btn" id="restartQuiz">Retake the quiz</button></div>`
   }
 }
