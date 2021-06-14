@@ -22,7 +22,7 @@ How to determine which movie will _"win"_? What determines this?
 
 ## 🧐 The Solution
 
-The outstanding [Open Movie Database API](https://www.omdbapi.com/) provides a wide variety of information related to movies - the three pieces of information pertinent to this application are: the running time, the MPAA rating, and the Rotten Tomatoes critic's score. The information is initially obscured to the user, so they are unable to answer the questions in a fashion that declares them the winner.
+The outstanding [Open Movie Database API](https://www.omdbapi.com/) provides a wide variety of information related to movies - the three pieces of information pertinent to this application are: the running time, the MPAA rating, and the Rotten Tomatoes critic's score. The information is initially obscured to the user, so they are unable to answer the questions in a fashion that declares them the winner. If their preference - for example, critic score - is important, the "winner" is awarded a point. If critic scores are _very_ important, than the winner is awarded two points.
 
 <img src="https://github.com/grittygrady/Movie-Vs-Movie/blob/master/previews/winner-page.png?raw=true">
 
