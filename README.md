@@ -6,7 +6,7 @@
 
 A quick, easy to use web application to help 2 people decide upon a movie, in a case where both people want to watch something different.
 
-<img src="https://github.com/grittygrady/Movie-Vs-Movie/blob/master/previews/landing-page.png?raw=true">
+<img src="https://github.com/grittygrady/Movie-Vs-Movie/blob/master/previews/results-page.png?raw=true">
 
 ## 💡 Motivation
 
