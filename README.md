@@ -1,12 +1,12 @@
 # Movie vs Movie
 
-<img src="https://github.com/grittygrady/ComiCombat/blob/master/src/images/ComicombatBanner.png?raw=true">
+<img src="https://github.com/grittygrady/Movie-Vs-Movie/blob/master/previews/MovieBanner.png?raw=true">
 
 ## 🚀 [Live Site](https://grittygrady.github.io/Movie-Vs-Movie/)
 
-A site designed to finally put to rest the many friendship ruining superhero related arguments we all face every day.
+A quick, easy to use web application to help 2 people decide upon a movie, in a case where both people want to watch something different.
 
-<img src="https://github.com/grittygrady/ComiCombat/blob/master/src/images/comcombat-chars.png?raw=true">
+<img src="https://github.com/grittygrady/Movie-Vs-Movie/blob/master/previews/landing-page.png?raw=true">
 
 ## 💡 Motivation
 
@@ -45,6 +45,13 @@ The wonderful [Superhero API](https://superheroapi.com/) provides numeric, quant
 - Null values
 
   > A number of the characters had no imformation on their power statistics, but a `null` value wouldn't work for the purpose of this app. I decided to simply assign random values for any statistic not available for the character, using the familiar `Math.floor(Math.random() * 100)`. In the future I plan a better solution to this problem.
+
+## 💾 Tech Used
+
+- React / Context API
+- Semantic-UI-React
+- The Superhero API
+- Deployed via Netlify
 
 ## 🔮 Next Steps
 
