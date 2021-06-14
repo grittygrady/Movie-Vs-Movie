@@ -6,60 +6,57 @@
 
 A quick, easy to use web application to help 2 people decide upon a movie, in a case where both people want to watch something different.
 
-<img src="https://github.com/grittygrady/Movie-Vs-Movie/blob/master/previews/results-page.png?raw=true">
+<img src="https://github.com/grittygrady/Movie-Vs-Movie/blob/master/previews/landing-page.png?raw=true">
 
 ## 💡 Motivation
 
-This began as an afternoon experiment; I found the Superhero API and thought spinnning up a quick superhero SPA would be a quick, fun project. Oh how wrong I was - not about it being fun, but certainly about "quick". My work on ComiCombat ended up teaching me many lessons, particularly regarding the value of really brainstorming and planning a project, as well as my first experience with "scope creep".
+Two people, friends, a couple, siblings, bitter rivals - we all have times where we can't agree on a movie to watch it. What better way to handle this than to hand the problem to an impartial piece of software?
 
-<img src="https://github.com/grittygrady/ComiCombat/blob/master/src/images/comicombat.png?raw=true">
+<img src="https://github.com/grittygrady/Movie-Vs-Movie/blob/master/previews/results-page.png?raw=true">
 
 ## 🤔 The Problem
 
-As described above, the desire is to "virtualize" the classic schoolyard arguments - "Uh uh, Spider-Man would _totally_ beat Batman in a fight!"
+How to determine which movie will _"win"_? What determines this?
 
-<img src="https://github.com/grittygrady/ComiCombat/blob/master/src/images/ComiCombatWin.png?raw=true">
+<img src="https://github.com/grittygrady/Movie-Vs-Movie/blob/master/previews/quiz-page.png?raw=true">
 
 ## 🧐 The Solution
 
-The wonderful [Superhero API](https://superheroapi.com/) provides numeric, quantifiable statistics regarding the abilities of a superhero _(or villain)_. Using these characteristics, we can determine a "winner" between the two combatants.
+The outstanding [Open Movie Database API](https://www.omdbapi.com/) provides a wide variety of information related to movies - the three pieces of information pertinent to this application are: the running time, the MPAA rating, and the Rotten Tomatoes critic's score. The information is initially obscured to the user, so they are unable to answer the questions in a fashion that declares them the winner.
+
+<img src="https://github.com/grittygrady/Movie-Vs-Movie/blob/master/previews/winner-page.png?raw=true">
 
 ## 🧠 Lessons Learned
 
-- Value of wireframes and initial planning.
+- Application "flow"
 
-  > I'll cut myself a bit of slack on this one. At the outset, I had no intention of any functionality aside fom a mere superhero search. However, once I saw that there was more potential, that this API was capable of something more interesting, I should've taken a step back and thought more carefully about structuring, as I painted myself into a corner a couple of times, having to refactor components for adequate flow of information.
+  > This was the first app I developed where I used wireframes and a carefully executed flow - breaking each concept down into smaller pieces is fundamental.
 
-- The React Contaxt API
+- jQuery
 
-  > I had used the context API before, but only in educational environments. I had never used it in an application I personally built. I knew the "how" and "what" surrounding the context API, but not the "when" or "why". It's quite possible that had I planned this app more meticulously I may not have had to use it, however I'm sort of glad that I did - I now understand _why_ it exists; my previous apps were more simple in their one way data flow, however this one required adjacent sibling components to share data, and now I understand the _when_. As with many other libraries, frameworks or concepts, the reason for it's purpose becomes more cemented in your brain when you encounter the problem it is designed to solve.
+  > It's pretty far out of fashion as far as I can tell, but I absolutely see the value of jQuery - I imagine when it was initally released it was an absolute game changer, truly living up to the motto _"Write less, do more"_. After using React and becoming accustomed to its component based structure, with logic and presentational code separated. Now, jQuery code looks sloppy and obtuse to me, but I'm consistently surprised when I inspect a site and find that a massive, e-commerce site is still rocking jQuery, and quite well at that.
 
-- Semantic-UI-React
+- `Promise.all()`
 
-  > Wow, the documentation on this framework is phenomenal! So many excellent examples of input and output. The filterable dropdown was revelatory - one of the search queries I initially used to test was "Spiderman". Well, turns out it's officially _Spider-Man_ - many users would be confused as to why they can't find one of the most popular heroes of all time. The autosuggest in the search will hopefully mitigate some of the confusion, as well as expose users to new heroes and villains.
+  > I'll never forget the trepidation with which I asked my mentor at the time if it was possible to call multiple `fetch` commands. She sent me a link to the MDN documentation on `Promise.all()`. My fears were quickly put to rest, and many doors to other possibilities opened for me.
 
-- Limitations of working with a styling framework
+- Media queries
 
-  > As great as Semantic UI is, sometimes it very much feels you have to fight against it occasionally, as it's fairly opinionated, if you lean heavily on it for component styling. Responsive design is more difficult, and as such this site doesn't look so hot... to put it mildly.
+  > I had used media queries before, but very simple ones. This is all custom CSS, and while admittedly not visually mind-blowing, it is fast, responsive and effective on all devices. You can view this site on a Tamagotchi.
 
-- Null values
+- "Hook" is way longer than I remember
 
-  > A number of the characters had no imformation on their power statistics, but a `null` value wouldn't work for the purpose of this app. I decided to simply assign random values for any statistic not available for the character, using the familiar `Math.floor(Math.random() * 100)`. In the future I plan a better solution to this problem.
+  > 2 hours and 24 minutes?!? Seriously? Either my attention span was much better as a child or this movie was so good it flew by. Either way, given its abysmal Rotten Tomatoes score, I'll stick to my nostalgia tinted rearview mirror, thank you very much.
 
 ## 💾 Tech Used
 
-- React / Context API
-- Semantic-UI-React
-- The Superhero API
-- Deployed via Netlify
+- jQuery
+- Custom CSS
+- The OMDB API
+- Typed with my very own fingers
 
 ## 🔮 Next Steps
 
-- The landing page is a mess. Need to clean that up.
-- It's a **disaster** on mobile. Get some queries together.
-- Need redirects to the main page for any improperly formed URL.
-- Explanation of how the scoring system works.
-- A better "battle" animation.
-- A better algorithm for determining a winner; say, assigning points based upon the disparity between skills; i.e. if hero one has 90 intelligence and hero two has 35 intelligence, hero one would receive two points, one point for a 25 point difference as well as an additional point for a difference equal to or greater than 50 points.
-- The API hasn't been updated / maintained in a while it seems. The database the data is drawn from is massively expanded, and I would love to build my own API to access it, so contacting bothn parties in an attempt to collaborate would be a good idea.
-- Further "gameify" it - say, best 2/3 or 3/5. Could add a little more depth to it.
+- I suppose much like a song, you never _finish_ a site or app, you just _give up on it at an acceptable point_.
+
+> The iterative nature of development is very familiar to me, and something I love - nothing is set in stone, the code is forever available via Github to tweak to your hearts delight. Having said that, I don't see any reason to expand this. I suppose a good use would be to see how quickly I can make it in React, and perhaps make it my first foray into React Native, as such a simple application would be a good way to dip my toe in.
