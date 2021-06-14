@@ -10,7 +10,7 @@ A quick, easy to use web application to help 2 people decide upon a movie, in a 
 
 ## 💡 Motivation
 
-Two people, friends, a couple, siblings, bitter rivals - we all have times where we can't agree on a movie to watch it. What better way to handle this than to hand the problem to an impartial piece of software?
+Two people, friends, a couple, siblings, bitter rivals - we all have times where we can't agree on a movie to watch. What better way to handle this than to hand the problem to an impartial piece of software?
 
 <img src="https://github.com/grittygrady/Movie-Vs-Movie/blob/master/previews/results-page.png?raw=true">
 
